@@ -1,0 +1,19 @@
+div.bonusDrop {
+	display: block;
+	position: absolute;
+	overflow: hidden;
+	width: 25px;
+	height: 25px;
+	top: -25px;
+	left: 0px;
+	z-index: 115999;
+}
+div.bonusDrop.health {
+	background-image: url(../gfx/bonusHealth.png);
+}
+div.bonusDrop.score {
+	background-image: url(../gfx/bonusScore.png);
+}
+div.bonusDrop.gun {
+	background-image: url(../gfx/bonusGun.png);
+}

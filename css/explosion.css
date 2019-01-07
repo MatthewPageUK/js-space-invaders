@@ -1,0 +1,17 @@
+.particleExplosion {
+	position: absolute;
+	overflow: hidden;
+	display: block;
+	width: 400px;
+	height: 400px;
+
+}
+.particle {
+	position: absolute;
+	overflow: hidden;
+	display: block;
+	width: 4px;
+	height: 4px;
+	background-color: gold;
+	border-radius: 2px;
+}

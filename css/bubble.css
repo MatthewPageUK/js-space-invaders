@@ -1,0 +1,28 @@
+div.bubble {
+	background-color: gold;
+	width: 25px;
+	height: 25px;
+	overflow: hidden;
+	position: absolute;
+	border-radius: 30px;
+}
+div.bubble p {
+	font-size: 0.8em;
+	font-weight: bold;
+	margin: 0px;
+	padding: 5px 0 0 0;
+	text-align: center;
+	width: 25px;
+}
+div.bubble.score {
+	background-color: gold;
+	color: black;
+}
+div.bubble.health {
+	background-color: green;
+	color: white;
+}
+div.bubble.damage {
+	background-color: red;
+	color: white;
+}

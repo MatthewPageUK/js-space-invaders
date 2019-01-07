@@ -1,0 +1,24 @@
+div.player1 {
+	position: absolute;	
+	overflow: hidden;
+	height: 27px;
+	width: 35px;
+	left: 0px;
+	top: 0px;
+}
+div.player1.ship1 {
+	background-image: url(../gfx/player.png);
+}
+div.player1.ship2 {
+	background-image: url(../gfx/player1.png);
+}
+
+div.bullet {
+	position: absolute;
+	overflow: hidden;
+	height: 16px;
+	width: 10px;
+	left: 0px;
+	top: -16px;
+	background-image: url(../gfx/playerBullet.png);
+}

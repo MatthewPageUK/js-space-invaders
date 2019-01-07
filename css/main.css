@@ -1,0 +1,236 @@
+body { font-family: 'Staatliches', cursive; }
+div { display: block; position: relative; overflow: hidden; }
+
+
+
+
+div.splashScreen {
+	position: absolute;
+	width: 440px;
+	height: 340px;
+	top: 50px;
+	left: 80px;
+	background-color: #fff;
+	border: 4px solid #000;
+	border-radius: 5px;
+	text-align: center;
+	padding: 20px;	
+	opacity: 1;
+	z-index: 120000;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+div.splashScreen h2 {
+	padding: 5px;
+	margin: 0 0 10px 0;
+	border-radius: 5px;
+	background-color: black;
+	color: white;
+}
+div.splashScreen a {
+	display: inline-block;
+	padding: 5px;
+	margin: 10px;
+	border: 1px solid black;
+	background-color: black;
+	border-radius: 5px;
+	text-decoration: none;
+	text-align: center;
+	width: 100px;
+	color: yellow;
+}
+div.splashScreen p {
+	margin: 0 0 10px 0;
+	padding: 0px;
+	text-align: center;
+}
+div.splashScreen p.half {
+	width: 49%; 
+	float: left
+}
+div.splashScreen p.half img {
+	display: block;
+	margin: 0 auto 5px auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	#gameOverScreen {
+		display: none;
+		position: absolute;
+		overflow: hidden;
+		width: 440px;
+		height: 380;
+		top: 50px;
+		left: 100px;
+		background-color: #fff;
+		border: 1px solid #000;
+		border-radius: 5px;
+		z-index: 129999;
+		text-align: center;
+		padding: 20px;
+	}
+	#gameOverScreen h2 {
+		padding: 5px;
+		margin: 0 0 10px 0;
+		border-radius: 5px;
+		background-color: black;
+		color: white;
+	}
+
+
+	#winnerScreen {
+		display: none;
+		position: absolute;
+		overflow: hidden;
+		width: 440px;
+		height: 380;
+		top: 50px;
+		left: 100px;
+		background-color: #fff;
+		border: 1px solid #000;
+		border-radius: 5px;
+		z-index: 129999;
+		text-align: center;
+		padding: 20px;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div.buttons {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 220px;
+	height: 95px;
+}
+				div.buttons a {
+					display: block;
+					padding: 5px;
+					margin: 10px;
+					border: 1px solid black;
+					background-color: black;
+					border-radius: 5px;
+					text-decoration: none;
+					text-align: center;
+					width: 190px;
+					color: yellow;
+				}
+
+#intro {
+	width: 280px; 
+	height: 440px;
+	float: left;
+	margin: 10px;
+	border: 0px solid black;  border-radius: 5px;
+	padding: 20px
+}
+#intro h1 {
+	margin: 0 0 10px 0;
+	padding: 0px;
+}
+#intro p {
+	margin: 0 0 10px 0;
+	padding: 0px;
+}
+#intro ul {
+	margin: 0 0 10px 0;
+	padding: 0px;
+}
+#intro ul li {
+	margin: 0 0 10px 0;
+	padding: 0px;
+}
+
+	#game {
+		width: 640px;
+		height: 480px;
+		position: relative;
+		margin: 10px;
+		border: 2px solid #000;
+		border-radius: 5px;
+		overflow: hidden;
+		background-image: url(../gfx/back.jpg);
+		background-size: 700px 466px;
+		float: left;
+	}
+
+	#gameTrophies { 
+		position: relative;
+		overflow: hidden;
+		width: 220px; float: left; border: 2px solid black;  border-radius: 5px;
+		margin: 10px;
+		height: 480px;
+	}
+	#gameTrophies h2 {
+		margin: 10px;
+		padding: 0px;
+	}
+	#gameTrophies p { 
+		position: relative;
+		overflow: hidden;
+		display: block; 
+		margin: 10px;
+		padding: 0px;
+	}
+	#gameTrophies p img { 
+		float: left;
+		margin-right: 5px;
+	}
+	#trophyFirstStrike {  }
+
+.codeClass {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

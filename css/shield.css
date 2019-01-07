@@ -1,0 +1,28 @@
+.shieldGrid {
+	position: absolute;
+	overflow: hidden;
+	display: block;
+	top: 350px;
+	left: 0px;
+	width: 640px;
+	height: 64px;
+	border: 0px solid #000;
+	z-index: 39999;
+}
+.shieldBlock {
+	position: absolute;
+	overflow: hidden;
+	display: block;
+	top: 0px;
+	left: 0px;
+	width: 15px;
+	height: 15px;
+	border: 1px solid #ccc;
+	background-color: black;
+	z-index: 39999;			
+	border-radius: 4px;
+}
+.shieldBlock.strong {
+	background-color: darkgoldenrod;
+	border: 1px solid darkgoldenrod;
+}
