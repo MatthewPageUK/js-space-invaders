@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: player/player-gun.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: player/player-gun.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Player bullet factory aka a Gun - controls creation and destruction of bullets
+ *
+ * @author Matthew Page &lt;work@mjp.co>
+ * @extends Factory
+ * @property {number} shotsFired - Total shots fired by this gun during current game
+ * @property {number} shotsHit - Total shots hit by this gun during current game
+ * @property {number} shotsMissed - Total shots missed by this gun during current game
+ */
+class PlayerGun extends Factory {
+	/**
+	 * Create a new player gun
+	 *
+	 * @param {SpaceInvaders} game - The current game instance
+	 * @param {PlayerShip} player - The player instance
+	 */
+	constructor(game, player) {
+		/* Factory(game, maxItems, minDelay, maxDelay) */
+		super(game, 1, 0, 0);
+		this.player = player;
+		this.shotsFired = 0;
+		this.shotsHit = 0;
+		this.shotsMissed = 0;
+	}
+	/**
+	 * Make a request to fire the gun, won't guarantee a bullet
+	 * Call the Factory.make() method to create the bullet instance
+	 *
+	 * @returns {boolean} True is it was fired, false if not
+	 */
+	fireGun() {
+		if(this.make()) {
+			this.shotsFired += 1;
+			new Audio('sfx/playerfire.mp3').play();
+			return true;
+		} else {
+			return false;
+		}
+	}
+	/**
+	 * Make a new Bullet if the gun can fire, overides default
+	 * Factory.make() method
+	 *
+	 * @returns {boolean} True is it was made, false if not
+	 */
+	make() {
+		if(this.canMake()) {
+			this.makeCounter += 1;
+			this.items.push(this.makeItem(this.player));
+			return true;
+		} else {
+			return false;
+		}
+	}
+	/**
+	 * Makes a new Bullet and returns it, called from 
+	 * Factory.make() method
+	 *
+	 * @returns {Bullet} Return Bullet instance
+	 */
+	makeItem() {								
+		return new Bullet(this.game, this, this.player, "bullet"+this.makeCounter)
+	}
+	/**
+	 * Can the gun fire (can the factory make a new instance at the moment)
+	 *
+	 * @returns {boolean}
+	 */
+	canFire() {
+		return this.canMake();
+	}
+	/**
+	 * Get the accuracy percentage
+	 *
+	 * @returns {number}
+	 */
+	get accuracy() {
+		if(this.shotsHit>0) {
+			return Math.round((this.shotsHit / (this.shotsHit+this.shotsMissed))*100);	
+		} else {
+			return 0;	
+		}
+	}
+	/**
+	 * Recieve a notification a bullet has hit. Called from Bullet
+	 *
+	 * @returns {boolean}
+	 */
+	notifyHit(bullet) {
+		this.shotsHit += 1;
+		return true;
+	}
+	/**
+	 * Recieve a notification a bullet has missed. Called from Bullet
+	 *
+	 * @returns {boolean}
+	 */
+	notifyMiss(bullet) {
+		this.shotsMissed += 1;
+		return true;
+	}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BonusDrop.html">BonusDrop</a></li><li><a href="BonusDropper.html">BonusDropper</a></li><li><a href="BonusGun.html">BonusGun</a></li><li><a href="BonusHealth.html">BonusHealth</a></li><li><a href="BonusScore.html">BonusScore</a></li><li><a href="Bubble.html">Bubble</a></li><li><a href="BubbleDamage.html">BubbleDamage</a></li><li><a href="BubbleFactory.html">BubbleFactory</a></li><li><a href="BubbleHealth.html">BubbleHealth</a></li><li><a href="BubbleScore.html">BubbleScore</a></li><li><a href="Bullet.html">Bullet</a></li><li><a href="EnemyBomb.html">EnemyBomb</a></li><li><a href="EnemyBombFactory.html">EnemyBombFactory</a></li><li><a href="EnemyBoss.html">EnemyBoss</a></li><li><a href="EnemyFleet.html">EnemyFleet</a></li><li><a href="EnemyShip.html">EnemyShip</a></li><li><a href="EnemyUFO.html">EnemyUFO</a></li><li><a href="Explosion.html">Explosion</a></li><li><a href="ExplosionFactory.html">ExplosionFactory</a></li><li><a href="ExplosionParticle.html">ExplosionParticle</a></li><li><a href="Factory.html">Factory</a></li><li><a href="HUD.html">HUD</a></li><li><a href="hudAccuracy.html">hudAccuracy</a></li><li><a href="hudComponent.html">hudComponent</a></li><li><a href="hudEnemy.html">hudEnemy</a></li><li><a href="hudHealth.html">hudHealth</a></li><li><a href="hudKillstreak.html">hudKillstreak</a></li><li><a href="hudReload.html">hudReload</a></li><li><a href="hudScore.html">hudScore</a></li><li><a href="PlayerGun.html">PlayerGun</a></li><li><a href="PlayerShip.html">PlayerShip</a></li><li><a href="ShieldBlock.html">ShieldBlock</a></li><li><a href="ShieldGrid.html">ShieldGrid</a></li><li><a href="SpaceInvaders.html">SpaceInvaders</a></li><li><a href="Sprite.html">Sprite</a></li><li><a href="Trophies.html">Trophies</a></li><li><a href="TrophyFirstStrike.html">TrophyFirstStrike</a></li><li><a href="TrophyKillstreak.html">TrophyKillstreak</a></li><li><a href="TrophyRoswell.html">TrophyRoswell</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Jan 08 2019 12:35:26 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -2,7 +2,6 @@
  * Enemy UFO - has more hitPoints, higher score, different image and movement logic.
  *
  * @author Matthew Page <work@mjp.co>
- * @class
  * @extends EnemyShip
  */
 class EnemyUFO extends EnemyShip {
@@ -32,7 +31,6 @@ class EnemyUFO extends EnemyShip {
 	 * Moves back and forwards across the screen, if it's the last enemy on screen it also 
 	 * starts to drop down.
 	 *
-	 * @method move
 	 * @returns {boolean}
 	 */
 	move() {

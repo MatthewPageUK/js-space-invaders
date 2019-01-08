@@ -3,8 +3,10 @@
  * the entire shield grid
  *
  * @author Matthew Page <work@mjp.co>
- * @class
  * @extends Sprite
+ * @property {number} gridX - The position of this block in the main shield grid
+ * @property {number} gridY - The position of this block in the main shield grid
+ * @property {ShieldGrid} shieldGrid - The main shield grid this block is a part of
  */
 class ShieldBlock extends Sprite {
 	/**

@@ -2,7 +2,6 @@
  * Controls the creation and destruction of enemy bombs.
  *
  * @author Matthew Page <work@mjp.co>
- * @class
  * @extends Factory
  */
 class EnemyBombFactory extends Factory {
@@ -18,7 +17,6 @@ class EnemyBombFactory extends Factory {
 	/**
 	 * Public make method to drop a new bomb.
 	 *
-	 * @method make
 	 * @param {EnemyShip} droppedBy - The enemy ship that dropped this bomb.
 	 * @returns {boolean} True or false if bomb was dropped.
 	 */
@@ -34,7 +32,6 @@ class EnemyBombFactory extends Factory {
 	/**
 	 * Private method, make a new Bomb and return the instance.
 	 *
-	 * @method makeItem
 	 * @param {EnemyShip} droppedBy - The enemy ship that dropped this bomb.
 	 * @returns {EnemyBomb} The bomb instance created.
 	 */

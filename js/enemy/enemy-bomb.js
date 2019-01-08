@@ -2,7 +2,6 @@
  * Individual enemy bomb.
  *
  * @author Matthew Page <work@mjp.co>
- * @class
  * @extends Sprite
  */
 class EnemyBomb extends Sprite {
@@ -26,7 +25,6 @@ class EnemyBomb extends Sprite {
 	/**
 	 * Update the movement and perform collision detection for player ship and shield grid.
 	 *
-	 * @method update
 	 * @returns {boolean} 
 	 */
 	update()
@@ -61,7 +59,6 @@ class EnemyBomb extends Sprite {
 	/**
 	 * Move the bomb down.
 	 *
-	 * @method move
 	 */
 	move() {
 		this.posY += this.velocity;	
@@ -69,7 +66,6 @@ class EnemyBomb extends Sprite {
 	/**
 	 * Send damage to the target object via the receiveDamage method.
 	 *
-	 * @method inflictDamage
 	 * @param {PlayerShip | ShieldBlock } target - The object the bomb hit, player ship or shield.
 	 * @returns {boolean}
 	 */

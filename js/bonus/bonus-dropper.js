@@ -4,7 +4,6 @@
  * at random intervals
  *
  * @author Matthew Page <work@mjp.co>
- * @class
  * @extends Factory
  */
 class BonusDropper extends Factory {

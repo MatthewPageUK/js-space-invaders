@@ -2,8 +2,9 @@
  * Roswell Trophy - kill the UFO while other enemies remain
  *
  * @author Matthew Page <work@mjp.co>
- * @class
- * @extends
+ * @property {EnemyFleet} enemyFleet - The enemy fleet and ships
+ * @property {boolean} isActive - Is it active or been won
+ * @property {Object} domElement - The HTML DOM element
  */
 class TrophyRoswell {
 	/**
@@ -20,7 +21,6 @@ class TrophyRoswell {
 	/**
 	 * Update loop checks if this trophy has been won
 	 * 
-	 * @method update
 	 */
 	update() {
 		if(this.check()) this.giveToPlayer();
@@ -28,7 +28,6 @@ class TrophyRoswell {
 	/**
 	 * Give this trophy to the player, just sets the opacity but could do more.
 	 *
-	 * @method giveToPlayer
 	 */
 	giveToPlayer() {
 		this.domElement.style.display = 'block';
@@ -37,8 +36,8 @@ class TrophyRoswell {
 	/**
 	 * Check if there is no UFO ship but still have enemy ships
 	 *
-	 * @method check
 	 * @returns {boolean}
+	 * @todo This is not efficient for what it is ...
 	 */
 	check() {
 		let hasUFO = false;

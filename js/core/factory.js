@@ -3,7 +3,6 @@
  * Timed auto creation option, random timer
  *
  * @author Matthew Page <work@mjp.co>
- * @class Factory
  * @property {SpaceInvaders} game - Main game instance
  * @property {number} makeCounter - Count of how many instances have been made by this factory
  * @property {array} items - Store the items created in here.
@@ -16,6 +15,10 @@ class Factory {
 	/**
 	 * Make the factory instance
 	 *
+	 * @param {SpaceInvaders} game - Main game instance
+	 * @param {number} maxItems - Maximum number of items in the store
+	 * @param {number} minDelay - Minimum delay before auto creating
+	 * @param {number} maxDelay - Maximum delay before auto creating
 	 */
 	constructor(game, maxItems, minDelay, maxDelay) {
 		this.game = game;

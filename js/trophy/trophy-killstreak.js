@@ -2,7 +2,9 @@
  * Killstreak Trophy - Get 10 kills in a row without taking damage or missing
  *
  * @author Matthew Page <work@mjp.co>
- * @class
+ * @property {Player} player - The player
+ * @property {boolean} isActive - Is it active or been won
+ * @property {Object} domElement - The HTML DOM element
  */
 class TrophyKillstreak {
 	/**
@@ -22,7 +24,6 @@ class TrophyKillstreak {
 	/**
 	 * Update loop checks if this trophy has been won
 	 * 
-	 * @method update
 	 */
 	update() {
 		if(this.check()) this.giveToPlayer();
@@ -30,7 +31,6 @@ class TrophyKillstreak {
 	/**
 	 * Give this trophy to the player, just sets the opacity but could do more.
 	 *
-	 * @method giveToPlayer
 	 */
 	giveToPlayer() {
 		this.domElement.style.display = 'block';
@@ -39,7 +39,6 @@ class TrophyKillstreak {
 	/**
 	 * Check the player killstreak value
 	 *
-	 * @method check
 	 * @returns {boolean}
 	 */
 	check() {

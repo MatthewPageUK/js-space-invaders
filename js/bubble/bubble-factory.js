@@ -41,13 +41,13 @@ class BubbleFactory extends Factory {
 	makeItem(type, value, startX, startY) {
 		switch(type) {
 			case "score" :
-				return new ScoreBubble(this.game, startX, startY, 'bubble'+this.makeCounter, value);
+				return new BubbleScore(this.game, startX, startY, 'bubble'+this.makeCounter, value);
 				break;
 			case "health" :
-				return new HealthBubble(this.game, startX, startY, 'bubble'+this.makeCounter, value);
+				return new BubbleHealth(this.game, startX, startY, 'bubble'+this.makeCounter, value);
 				break;
 			case "damage" : 
-				return new DamageBubble(this.game, startX, startY, 'bubble'+this.makeCounter, value);
+				return new BubbleDamage(this.game, startX, startY, 'bubble'+this.makeCounter, value);
 				break;
 		}
 	}	

@@ -2,8 +2,10 @@
  * Player bullet factory aka a Gun - controls creation and destruction of bullets
  *
  * @author Matthew Page <work@mjp.co>
- * @class
  * @extends Factory
+ * @property {number} shotsFired - Total shots fired by this gun during current game
+ * @property {number} shotsHit - Total shots hit by this gun during current game
+ * @property {number} shotsMissed - Total shots missed by this gun during current game
  */
 class PlayerGun extends Factory {
 	/**
@@ -13,7 +15,7 @@ class PlayerGun extends Factory {
 	 * @param {PlayerShip} player - The player instance
 	 */
 	constructor(game, player) {
-		// Factory(game, maxItems, minDelay, maxDelay)
+		/* Factory(game, maxItems, minDelay, maxDelay) */
 		super(game, 1, 0, 0);
 		this.player = player;
 		this.shotsFired = 0;
@@ -59,10 +61,19 @@ class PlayerGun extends Factory {
 	makeItem() {								
 		return new Bullet(this.game, this, this.player, "bullet"+this.makeCounter)
 	}
-	/* Can the gun fire (can the factory make a new instance at the moment) */
+	/**
+	 * Can the gun fire (can the factory make a new instance at the moment)
+	 *
+	 * @returns {boolean}
+	 */
 	canFire() {
 		return this.canMake();
 	}
+	/**
+	 * Get the accuracy percentage
+	 *
+	 * @returns {number}
+	 */
 	get accuracy() {
 		if(this.shotsHit>0) {
 			return Math.round((this.shotsHit / (this.shotsHit+this.shotsMissed))*100);	
@@ -70,10 +81,20 @@ class PlayerGun extends Factory {
 			return 0;	
 		}
 	}
+	/**
+	 * Recieve a notification a bullet has hit. Called from Bullet
+	 *
+	 * @returns {boolean}
+	 */
 	notifyHit(bullet) {
 		this.shotsHit += 1;
 		return true;
 	}
+	/**
+	 * Recieve a notification a bullet has missed. Called from Bullet
+	 *
+	 * @returns {boolean}
+	 */
 	notifyMiss(bullet) {
 		this.shotsMissed += 1;
 		return true;

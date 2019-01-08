@@ -46,7 +46,6 @@ class EnemyShip extends Sprite {
 	 * When it reaches 0 the update loop will trigger a new bomb to be 
 	 * created from the EnemyBombFactory.
 	 *
-	 * @method startBombCountdown
 	 */
 	startBombCountdown() {
 		this.bombCountdown = Math.floor((Math.random() * this.maxBombReload) + 1);

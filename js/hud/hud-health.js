@@ -6,7 +6,14 @@
  */
 class hudHealth extends hudComponent {
 /* Health on screen representation */
+	/**
+	* Create the accuracy hud component.
+	*
+	* @param {SpaceInvaders} game - The current game.
+	* @param {PlayerShip} - The current player ship.
+	*/
 	constructor(game, player) {
+		/* hudComponent(game, player) */
 		super(game, player);
 		this.domElement = document.getElementById('hudHealth');
 	}

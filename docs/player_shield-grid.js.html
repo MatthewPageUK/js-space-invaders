@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: player/shield-grid.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: player/shield-grid.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*  */
+/**
+ * Wrapper and factory for the entire grid of shield blocks. Makes up the whole
+ * shield. 
+ * 0 - No shield
+ * 1 - Standard shield block
+ * 2 - Different colour shield block
+ *
+ * @author Matthew Page &lt;work@mjp.co>
+ * @extends Sprite
+ * @property {array} shieldBlocks - The main shield grid array, stores all the shield blocks
+ * @property {array} shieldPattern - A pattern to read and turn into the shield grid
+ */
+class ShieldGrid extends Sprite {
+	/**
+	 * Create a new shield grid
+	 *
+	 * @param {SpaceInvaders} game - The current game instance
+	 */
+	constructor(game) {
+		/* Sprite(game, id, posX, posY, width, height, velocity, direction, hitPoints) */
+		super(game, 'shieldGrid1', 0, 350, 640, 64, 0, 0, 1);
+
+		this.shieldBlocks = [];
+		this.shieldPattern = [
+			[0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0],
+			[0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,1,2,2,2,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0],
+			[0,1,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,1,0],
+			[0,1,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,1,0]
+		];
+		this.makeDomElement('shieldGrid');
+		this.domElement = document.getElementById(this.id);
+		this.makeGrid(this.shieldPattern);
+	}
+	/**
+	 * Make the grid pattern by creating new ShieldBlock instances
+	 * Populates the shieldBlocks array from shieldPattern
+	 *
+	 * @param {array} pattern - The shield pattern array to make
+	 */
+	makeGrid(pattern) {
+		this.shieldBlocks = [];
+		/* Scan the shieldBlocks array and replace '1' or '2' with new ShieldBlock instances */
+		for(let gridY=0; gridY&lt;4; ++gridY) {
+			this.shieldBlocks[gridY] = [];
+			for(let gridX=0; gridX&lt;40; ++gridX) {
+				if(pattern[gridY][gridX]==1) {					
+					this.shieldBlocks[gridY][gridX] = new ShieldBlock(this.game, this, gridX, gridY);
+				}
+				else if(pattern[gridY][gridX]==2) {					
+					this.shieldBlocks[gridY][gridX] = new ShieldBlock(this.game, this, gridX, gridY);
+					this.shieldBlocks[gridY][gridX].domElement.classList.add('strong');
+					this.shieldBlocks[gridY][gridX].hitPoints = 1000; // not implemented in receiveDamage
+				}
+				else {
+					this.shieldBlocks[gridY][gridX] = false;
+				}
+			}
+		}
+	}
+	/**
+	 * Reset the shield to default. Remove all the shield blocks from the
+	 * shield grid HTML dom element.
+	 *
+	 */
+	reset() {
+		this.domElement.innerHTML = "";
+		this.makeGrid(this.shieldPattern);
+	}
+	/**
+	 * Return the ShieldBlock instance at the global pixel coord provided.
+	 * Converts to the local shieldGrid coords (40x4 grid)
+	 *
+	 * @param {number} x - Global X pixel position
+	 * @param {number} y - Global y pixel position
+	 * @returns {ShieldBlock} Or false if position is empty
+	 */
+	getShieldBlockAt(x, y) {	
+		if(this.inMe(x, y)) {
+			let gridY = Math.floor( (y - this.posY)/16 );
+			let gridX = Math.floor( x / 16 );
+			return this.shieldBlocks[gridY][gridX];
+		}
+	}
+	/**
+	 * Return the ShieldBlock(s) that are colliding with the supplied
+	 * Sprite instance. Uses the shieldGrid array to quickly find all
+	 * the blocks touching the sprite
+	 *
+	 * @param {Sprite} sprite - The sprite instance colliding with the shield.
+	 * @returns {ShieldBlock[]} Array of shieldBlocks in collision with sprite.
+	 */
+	getShieldBlocksCollidingWith(sprite) {
+		let blocks = [];
+		if(sprite.posY + sprite.height > this.posY) {
+			/* The first row of the shield grid the sprite touches */
+			let startY = Math.floor((sprite.posY-this.posY)/16);
+			startY = startY &lt; 0 ? 0 : startY;
+			
+			/* The last row of the shield grid the sprite touches */
+			let endY = Math.ceil((sprite.posY+sprite.height-this.posY)/16);
+			endY = endY &lt; 0 ? 0 : endY;
+			endY = endY > 3 ? 3 : endY;
+			
+			/* Loop through the shield grid */
+			for(let gridY=startY; gridY&lt;endY; ++gridY) {
+				for(let gridX = Math.floor(sprite.posX/16); gridX &lt;= Math.ceil((sprite.posX+sprite.width)/16); ++gridX) {					
+					if(this.shieldBlocks[gridY][gridX]) {
+						blocks.push(this.shieldBlocks[gridY][gridX]);
+					}
+				}
+			}
+		}
+		return blocks;
+	}
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BonusDrop.html">BonusDrop</a></li><li><a href="BonusDropper.html">BonusDropper</a></li><li><a href="BonusGun.html">BonusGun</a></li><li><a href="BonusHealth.html">BonusHealth</a></li><li><a href="BonusScore.html">BonusScore</a></li><li><a href="Bubble.html">Bubble</a></li><li><a href="BubbleDamage.html">BubbleDamage</a></li><li><a href="BubbleFactory.html">BubbleFactory</a></li><li><a href="BubbleHealth.html">BubbleHealth</a></li><li><a href="BubbleScore.html">BubbleScore</a></li><li><a href="Bullet.html">Bullet</a></li><li><a href="EnemyBomb.html">EnemyBomb</a></li><li><a href="EnemyBombFactory.html">EnemyBombFactory</a></li><li><a href="EnemyBoss.html">EnemyBoss</a></li><li><a href="EnemyFleet.html">EnemyFleet</a></li><li><a href="EnemyShip.html">EnemyShip</a></li><li><a href="EnemyUFO.html">EnemyUFO</a></li><li><a href="Explosion.html">Explosion</a></li><li><a href="ExplosionFactory.html">ExplosionFactory</a></li><li><a href="ExplosionParticle.html">ExplosionParticle</a></li><li><a href="Factory.html">Factory</a></li><li><a href="HUD.html">HUD</a></li><li><a href="hudAccuracy.html">hudAccuracy</a></li><li><a href="hudComponent.html">hudComponent</a></li><li><a href="hudEnemy.html">hudEnemy</a></li><li><a href="hudHealth.html">hudHealth</a></li><li><a href="hudKillstreak.html">hudKillstreak</a></li><li><a href="hudReload.html">hudReload</a></li><li><a href="hudScore.html">hudScore</a></li><li><a href="PlayerGun.html">PlayerGun</a></li><li><a href="PlayerShip.html">PlayerShip</a></li><li><a href="ShieldBlock.html">ShieldBlock</a></li><li><a href="ShieldGrid.html">ShieldGrid</a></li><li><a href="SpaceInvaders.html">SpaceInvaders</a></li><li><a href="Sprite.html">Sprite</a></li><li><a href="Trophies.html">Trophies</a></li><li><a href="TrophyFirstStrike.html">TrophyFirstStrike</a></li><li><a href="TrophyKillstreak.html">TrophyKillstreak</a></li><li><a href="TrophyRoswell.html">TrophyRoswell</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Jan 08 2019 12:35:26 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

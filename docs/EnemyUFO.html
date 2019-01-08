@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: EnemyUFO</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: EnemyUFO</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>EnemyUFO<span class="signature">(game, fleet, bombFactory, startX, startY, direction, id)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">Enemy UFO - has more hitPoints, higher score, different image and movement logic.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="EnemyUFO"><span class="type-signature"></span>new EnemyUFO<span class="signature">(game, fleet, bombFactory, startX, startY, direction, id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create an enemy UFO ship.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>game</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="SpaceInvaders.html">SpaceInvaders</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The current game.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fleet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="EnemyFleet.html">EnemyFleet</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Factory that created this instance.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bombFactory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="EnemyBombFactory.html">EnemyBombFactory</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Factory to create enemy bombs.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>startX</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Starting X position.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>startY</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Starting Y position.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>direction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Direction ship is moving.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unique DOM ID.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:work@mjp.co">Matthew Page</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="enemy_enemy-ship-ufo.js.html">enemy/enemy-ship-ufo.js</a>, <a href="enemy_enemy-ship-ufo.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="EnemyShip.html">EnemyShip</a></li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="kill"><span class="type-signature"></span>kill<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Kills the enemy ship and starts the death animation loop, updates Score.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="EnemyShip.html#kill">EnemyShip#kill</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="enemy_enemy-ship.js.html">enemy/enemy-ship.js</a>, <a href="enemy_enemy-ship.js.html#line158">line 158</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="move"><span class="type-signature"></span>move<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Overide the default EnemyShip.move() method to give the UFO a different movement pattern 
+Moves back and forwards across the screen, if it's the last enemy on screen it also 
+starts to drop down.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="EnemyShip.html#move">EnemyShip#move</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="enemy_enemy-ship-ufo.js.html">enemy/enemy-ship-ufo.js</a>, <a href="enemy_enemy-ship-ufo.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="startBombCountdown"><span class="type-signature"></span>startBombCountdown<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Reset the bomb counter to a random number, drops 1 each game loop.
+When it reaches 0 the update loop will trigger a new bomb to be 
+created from the EnemyBombFactory.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="EnemyShip.html#startBombCountdown">EnemyShip#startBombCountdown</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="enemy_enemy-ship.js.html">enemy/enemy-ship.js</a>, <a href="enemy_enemy-ship.js.html#line50">line 50</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Main update loop called every animation frame.
+Dying - If the ship is dying rotate and shrink it until width < 5
+Hit Points - If < 0 start the dying process
+Bomb launch - Check the countdown and if < 0 make new bomb
+Collision detection - player ship and shieldblock
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="EnemyShip.html#update">EnemyShip#update</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="enemy_enemy-ship.js.html">enemy/enemy-ship.js</a>, <a href="enemy_enemy-ship.js.html#line62">line 62</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Success or failure.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BonusDrop.html">BonusDrop</a></li><li><a href="BonusDropper.html">BonusDropper</a></li><li><a href="BonusGun.html">BonusGun</a></li><li><a href="BonusHealth.html">BonusHealth</a></li><li><a href="BonusScore.html">BonusScore</a></li><li><a href="Bubble.html">Bubble</a></li><li><a href="BubbleDamage.html">BubbleDamage</a></li><li><a href="BubbleFactory.html">BubbleFactory</a></li><li><a href="BubbleHealth.html">BubbleHealth</a></li><li><a href="BubbleScore.html">BubbleScore</a></li><li><a href="Bullet.html">Bullet</a></li><li><a href="EnemyBomb.html">EnemyBomb</a></li><li><a href="EnemyBombFactory.html">EnemyBombFactory</a></li><li><a href="EnemyBoss.html">EnemyBoss</a></li><li><a href="EnemyFleet.html">EnemyFleet</a></li><li><a href="EnemyShip.html">EnemyShip</a></li><li><a href="EnemyUFO.html">EnemyUFO</a></li><li><a href="Explosion.html">Explosion</a></li><li><a href="ExplosionFactory.html">ExplosionFactory</a></li><li><a href="ExplosionParticle.html">ExplosionParticle</a></li><li><a href="Factory.html">Factory</a></li><li><a href="HUD.html">HUD</a></li><li><a href="hudAccuracy.html">hudAccuracy</a></li><li><a href="hudComponent.html">hudComponent</a></li><li><a href="hudEnemy.html">hudEnemy</a></li><li><a href="hudHealth.html">hudHealth</a></li><li><a href="hudKillstreak.html">hudKillstreak</a></li><li><a href="hudReload.html">hudReload</a></li><li><a href="hudScore.html">hudScore</a></li><li><a href="PlayerGun.html">PlayerGun</a></li><li><a href="PlayerShip.html">PlayerShip</a></li><li><a href="ShieldBlock.html">ShieldBlock</a></li><li><a href="ShieldGrid.html">ShieldGrid</a></li><li><a href="SpaceInvaders.html">SpaceInvaders</a></li><li><a href="Sprite.html">Sprite</a></li><li><a href="Trophies.html">Trophies</a></li><li><a href="TrophyFirstStrike.html">TrophyFirstStrike</a></li><li><a href="TrophyKillstreak.html">TrophyKillstreak</a></li><li><a href="TrophyRoswell.html">TrophyRoswell</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Jan 08 2019 12:35:26 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -2,7 +2,6 @@
  * Space Invaders Game - main game code, loop, event handler 
  *
  * @author Matthew Page <work@mjp.co>
- * @extends
  * @property {number} width - Width of the game in pixels
  * @property {number} height - Height of the game in pixels
  * @property {Object} domElement - DOM element of the game

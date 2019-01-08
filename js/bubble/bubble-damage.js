@@ -4,7 +4,7 @@
  * @author Matthew Page <work@mjp.co>
  * @extends Bubble
  */
-class DamageBubble extends Bubble {
+class BubbleDamage extends Bubble {
 	/**
 	 * Create a damage bubble.
 	 *

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: player/player-bullet.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: player/player-bullet.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Player bullet, created by the player gun. Movement and collision detection
+ *
+ * @author Matthew Page &lt;work@mjp.co>
+ * @extends Sprite
+ * @property {Player} player - The player who fired this bullet
+ * @property {PlayerGun} gun - The players gun that fired this bullet
+ * @property {number} damage - The amount of damage this bullet inflicts
+ */
+class Bullet extends Sprite {
+	/**
+	 * Create the individual bullet instance.
+	 *
+	 * @param {Game} game - The current game instance.
+	 * @param {Gun} gun - The player gun that fired this bullet.
+	 * @param {Player} player - The player instance.
+	 * @param {string} id - Unique DOM element id.
+	 */
+	constructor(game, gun, player, id) {
+		/* Sprite(game, id, posX, posY, width, height, velocity, direction, hitPoints) */
+		super(game, id, player.posX+10, player.posY-15, 10, 16, 4, false, false);
+		
+		this.player = player;
+		this.gun = gun;
+		this.damage = 1;
+		this.makeDomElement('bullet');
+		this.domElement = document.getElementById(this.id);
+	}
+	/**
+	 * Main update loop, movement and collision detection.
+	 *
+	 * @returns {boolean} Success or failure.
+	 */
+	update()
+	{
+		this.posY -= this.velocity;
+		
+		/* Gone off screen, missed so destroy the bullet */
+		if(this.posY &lt; -this.height)								
+		{
+			this.gun.notifyMiss(this);
+			this.player.killstreak = 0;
+			this.gun.destroy(this);
+			return false;
+		}
+		else
+		{
+			/* Collision detection - is this bullet inside the ShieldGrid / ShieldBlock */
+			let shieldBlock = false;
+			shieldBlock = this.game.shieldGrid.getShieldBlockAt(this.posX+(this.width/2), this.posY);
+			if(shieldBlock) {
+				this.game.explosionFactory.make(this.posX+(this.width/2), this.posY-8, 'black', 10, 6, 1);
+				shieldBlock.destroy();
+				this.player.killstreak = 0;
+				this.gun.notifyMiss(this);
+				this.gun.destroy(this);
+				return false;
+			}
+			
+			/* Collision detection - is this bullet inside an enemy ship. */
+			for (let index = 0; index &lt; this.game.enemyFleet.items.length; ++index) {
+				if(this.detectCollisionWith(this.game.enemyFleet.items[index])) {
+					this.inflictDamage(this.game.enemyFleet.items[index]);
+					this.gun.notifyHit(this);
+					this.gun.destroy(this);
+					return false;
+				}
+			}
+		}
+		this.draw();
+		return true;
+	}
+	/**
+	 * Inflict damage on an enemy ship by calling its receiveDamage method.
+	 *
+	 * @param {EnemyShip} enemyShip - The ship we are inflicting damage on.
+	 * @returns {boolean} Success or failure.
+	 */
+	inflictDamage(enemyShip) {
+		this.game.explosionFactory.make(this.posX+(this.width/2), this.posY-20, 'grey', 15, 4, 0);
+		if(enemyShip.receiveDamage(this.damage)) {
+			/* Kill shot */
+			this.player.killstreak += 1;
+		} else {
+			/* Hit but didn't die */
+			this.player.killstreak = 0;
+		}
+		return true;
+	}
+}
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BonusDrop.html">BonusDrop</a></li><li><a href="BonusDropper.html">BonusDropper</a></li><li><a href="BonusGun.html">BonusGun</a></li><li><a href="BonusHealth.html">BonusHealth</a></li><li><a href="BonusScore.html">BonusScore</a></li><li><a href="Bubble.html">Bubble</a></li><li><a href="BubbleDamage.html">BubbleDamage</a></li><li><a href="BubbleFactory.html">BubbleFactory</a></li><li><a href="BubbleHealth.html">BubbleHealth</a></li><li><a href="BubbleScore.html">BubbleScore</a></li><li><a href="Bullet.html">Bullet</a></li><li><a href="EnemyBomb.html">EnemyBomb</a></li><li><a href="EnemyBombFactory.html">EnemyBombFactory</a></li><li><a href="EnemyBoss.html">EnemyBoss</a></li><li><a href="EnemyFleet.html">EnemyFleet</a></li><li><a href="EnemyShip.html">EnemyShip</a></li><li><a href="EnemyUFO.html">EnemyUFO</a></li><li><a href="Explosion.html">Explosion</a></li><li><a href="ExplosionFactory.html">ExplosionFactory</a></li><li><a href="ExplosionParticle.html">ExplosionParticle</a></li><li><a href="Factory.html">Factory</a></li><li><a href="HUD.html">HUD</a></li><li><a href="hudAccuracy.html">hudAccuracy</a></li><li><a href="hudComponent.html">hudComponent</a></li><li><a href="hudEnemy.html">hudEnemy</a></li><li><a href="hudHealth.html">hudHealth</a></li><li><a href="hudKillstreak.html">hudKillstreak</a></li><li><a href="hudReload.html">hudReload</a></li><li><a href="hudScore.html">hudScore</a></li><li><a href="PlayerGun.html">PlayerGun</a></li><li><a href="PlayerShip.html">PlayerShip</a></li><li><a href="ShieldBlock.html">ShieldBlock</a></li><li><a href="ShieldGrid.html">ShieldGrid</a></li><li><a href="SpaceInvaders.html">SpaceInvaders</a></li><li><a href="Sprite.html">Sprite</a></li><li><a href="Trophies.html">Trophies</a></li><li><a href="TrophyFirstStrike.html">TrophyFirstStrike</a></li><li><a href="TrophyKillstreak.html">TrophyKillstreak</a></li><li><a href="TrophyRoswell.html">TrophyRoswell</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Jan 08 2019 12:35:26 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

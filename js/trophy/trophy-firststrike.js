@@ -2,16 +2,17 @@
  * First Strike Trophy - First shot gets a kill
  *
  * @author Matthew Page <work@mjp.co>
- * @class
+ * @property {PlayerGun} gun - The player gun
+ * @property {EnemyFleet} enemyFleet - The enemy fleet and ships
+ * @property {boolean} isActive - Is it active or been won
+ * @property {Object} domElement - The HTML DOM element
  */
 class TrophyFirstStrike {
 	/**
-	 * Make a new enemy bomb.
+	 * Make a first strike trophy instance.
 	 *
-	 * @param {SpaceInvaders} game - The current game instance.
-	 * @param {EnemyBombFactory} bombFactory - The bomb factory that created this bomb.
-	 * @param {EnemyShip} droppedBy - The enemy ship that dropped this bomb.
-	 * @param {string} id - Unique HTML DOM id.
+	 * @param {PlayerGun} gun - The player gun.
+	 * @param {EnemyFleet} enemyFleet - The enemy fleet and ships.
 	 */
 	constructor(gun, enemyFleet) {
 		this.gun = gun;
@@ -23,7 +24,6 @@ class TrophyFirstStrike {
 	/**
 	 * Update loop checks if this trophy has been won
 	 * 
-	 * @method update
 	 */
 	update() {
 		if(this.check()) this.giveToPlayer();
@@ -31,7 +31,6 @@ class TrophyFirstStrike {
 	/**
 	 * Give this trophy to the player, just sets the opacity but could do more.
 	 *
-	 * @method giveToPlayer
 	 */
 	giveToPlayer() {
 		this.domElement.style.display = 'block';
@@ -40,8 +39,8 @@ class TrophyFirstStrike {
 	/**
 	 * One shot one kill BUGGED !!!!!
 	 *
-	 * @method check
 	 * @returns {boolean} True if trophy requirements have been met
+	 * @todo This is bugged code, fix it
 	 */
 	check() {
 		return (this.gun.shotsFired == 1 && this.enemyFleet.deaths == 1);

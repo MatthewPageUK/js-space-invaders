@@ -2,7 +2,6 @@
  * Enemy Boss - has more hitPoints, higher score and different image. Extends the standard EnemyShip
  *
  * @author Matthew Page <work@mjp.co>
- * @class
  * @extends EnemyShip
  */
 class EnemyBoss extends EnemyShip {

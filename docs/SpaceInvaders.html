@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: SpaceInvaders</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: SpaceInvaders</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>SpaceInvaders<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">Space Invaders Game - main game code, loop, event handler</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="SpaceInvaders"><span class="type-signature"></span>new SpaceInvaders<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create a new space invaders game instance
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Width of the game in pixels</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Height of the game in pixels</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>domElement</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">DOM element of the game</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>score</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Current game score</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isPaused</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Is the game paused</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gameState</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">State of current game</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>player</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PlayerShip.html">PlayerShip</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Player 1</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bombFactory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="EnemyBombFactory.html">EnemyBombFactory</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Creates enemy bombs</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>enemyFleet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="EnemyFleet.html">EnemyFleet</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The enemy fleet of ships</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bonusDropper</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="BonusDropper.html">BonusDropper</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Bonus drops</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bubbleFactory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="BubbleFactory.html">BubbleFactory</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Bubbles</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>explosionFactory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ExplosionFactory.html">ExplosionFactory</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Explosions</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>shieldGrid</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ShieldGrid.html">ShieldGrid</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Shield</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>trophySystem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Trophies.html">Trophies</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Tophies</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>HUD</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="HUD.html">HUD</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">On screen HUD</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>splashScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Splashscreen DOM element</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gameOverScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Game over DOM element</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>winnerScreen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Winner DOM element</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:work@mjp.co">Matthew Page</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="spaceinvaders.js.html">spaceinvaders.js</a>, <a href="spaceinvaders.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="changeState"><span class="type-signature"></span>changeState<span class="signature">(state)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Change the game state - splash, play, gameover, win
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>state</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The state code to change to</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="spaceinvaders.js.html">spaceinvaders.js</a>, <a href="spaceinvaders.js.html#line101">line 101</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="checkLoss"><span class="type-signature"></span>checkLoss<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Check if we have lost the game, is it game over?
+Player hit points < 1
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="spaceinvaders.js.html">spaceinvaders.js</a>, <a href="spaceinvaders.js.html#line216">line 216</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="checkWin"><span class="type-signature"></span>checkWin<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Check if we have won the game, killed all the enemy ships
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="spaceinvaders.js.html">spaceinvaders.js</a>, <a href="spaceinvaders.js.html#line204">line 204</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="handleEvent"><span class="type-signature"></span>handleEvent<span class="signature">(e)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Handle the incoming DOM events (keyup and keydown). Pass relevant 
+key events to the PlayerShip instance
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>e</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Event</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The DOM event instance</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="spaceinvaders.js.html">spaceinvaders.js</a>, <a href="spaceinvaders.js.html#line62">line 62</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    False, prevent the browser processing these events.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="pauseToggle"><span class="type-signature"></span>pauseToggle<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Toggle the pause status
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="spaceinvaders.js.html">spaceinvaders.js</a>, <a href="spaceinvaders.js.html#line183">line 183</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="restart"><span class="type-signature"></span>restart<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Restart the game
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="spaceinvaders.js.html">spaceinvaders.js</a>, <a href="spaceinvaders.js.html#line81">line 81</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="splashToggle"><span class="type-signature"></span>splashToggle<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Toggle the splash screen
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="spaceinvaders.js.html">spaceinvaders.js</a>, <a href="spaceinvaders.js.html#line191">line 191</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Main update loop, calls update on other components.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="spaceinvaders.js.html">spaceinvaders.js</a>, <a href="spaceinvaders.js.html#line162">line 162</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BonusDrop.html">BonusDrop</a></li><li><a href="BonusDropper.html">BonusDropper</a></li><li><a href="BonusGun.html">BonusGun</a></li><li><a href="BonusHealth.html">BonusHealth</a></li><li><a href="BonusScore.html">BonusScore</a></li><li><a href="Bubble.html">Bubble</a></li><li><a href="BubbleDamage.html">BubbleDamage</a></li><li><a href="BubbleFactory.html">BubbleFactory</a></li><li><a href="BubbleHealth.html">BubbleHealth</a></li><li><a href="BubbleScore.html">BubbleScore</a></li><li><a href="Bullet.html">Bullet</a></li><li><a href="EnemyBomb.html">EnemyBomb</a></li><li><a href="EnemyBombFactory.html">EnemyBombFactory</a></li><li><a href="EnemyBoss.html">EnemyBoss</a></li><li><a href="EnemyFleet.html">EnemyFleet</a></li><li><a href="EnemyShip.html">EnemyShip</a></li><li><a href="EnemyUFO.html">EnemyUFO</a></li><li><a href="Explosion.html">Explosion</a></li><li><a href="ExplosionFactory.html">ExplosionFactory</a></li><li><a href="ExplosionParticle.html">ExplosionParticle</a></li><li><a href="Factory.html">Factory</a></li><li><a href="HUD.html">HUD</a></li><li><a href="hudAccuracy.html">hudAccuracy</a></li><li><a href="hudComponent.html">hudComponent</a></li><li><a href="hudEnemy.html">hudEnemy</a></li><li><a href="hudHealth.html">hudHealth</a></li><li><a href="hudKillstreak.html">hudKillstreak</a></li><li><a href="hudReload.html">hudReload</a></li><li><a href="hudScore.html">hudScore</a></li><li><a href="PlayerGun.html">PlayerGun</a></li><li><a href="PlayerShip.html">PlayerShip</a></li><li><a href="ShieldBlock.html">ShieldBlock</a></li><li><a href="ShieldGrid.html">ShieldGrid</a></li><li><a href="SpaceInvaders.html">SpaceInvaders</a></li><li><a href="Sprite.html">Sprite</a></li><li><a href="Trophies.html">Trophies</a></li><li><a href="TrophyFirstStrike.html">TrophyFirstStrike</a></li><li><a href="TrophyKillstreak.html">TrophyKillstreak</a></li><li><a href="TrophyRoswell.html">TrophyRoswell</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Jan 08 2019 12:35:27 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

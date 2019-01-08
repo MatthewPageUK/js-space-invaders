@@ -4,7 +4,7 @@
  * @author Matthew Page <work@mjp.co>
  * @extends Bubble
  */
-class HealthBubble extends Bubble {
+class BubbleHealth extends Bubble {
 	/**
 	 * Create a health bubble.
 	 *

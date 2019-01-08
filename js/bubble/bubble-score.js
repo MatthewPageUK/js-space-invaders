@@ -4,7 +4,7 @@
  * @author Matthew Page <work@mjp.co>
  * @extends Sprite
  */
-class ScoreBubble extends Bubble {
+class BubbleScore extends Bubble {
 	/**
 	 * Create a score bubble.
 	 *

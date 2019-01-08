@@ -2,10 +2,14 @@
 /**
  * Wrapper and factory for the entire grid of shield blocks. Makes up the whole
  * shield. 
+ * 0 - No shield
+ * 1 - Standard shield block
+ * 2 - Different colour shield block
  *
  * @author Matthew Page <work@mjp.co>
- * @class
  * @extends Sprite
+ * @property {array} shieldBlocks - The main shield grid array, stores all the shield blocks
+ * @property {array} shieldPattern - A pattern to read and turn into the shield grid
  */
 class ShieldGrid extends Sprite {
 	/**
@@ -32,8 +36,6 @@ class ShieldGrid extends Sprite {
 	 * Make the grid pattern by creating new ShieldBlock instances
 	 * Populates the shieldBlocks array from shieldPattern
 	 *
-	 * @method
-	 * @name makeGrid
 	 * @param {array} pattern - The shield pattern array to make
 	 */
 	makeGrid(pattern) {
@@ -60,7 +62,6 @@ class ShieldGrid extends Sprite {
 	 * Reset the shield to default. Remove all the shield blocks from the
 	 * shield grid HTML dom element.
 	 *
-	 * @method reset
 	 */
 	reset() {
 		this.domElement.innerHTML = "";
@@ -70,8 +71,6 @@ class ShieldGrid extends Sprite {
 	 * Return the ShieldBlock instance at the global pixel coord provided.
 	 * Converts to the local shieldGrid coords (40x4 grid)
 	 *
-	 * @method
-	 * @name getShieldBlockAt
 	 * @param {number} x - Global X pixel position
 	 * @param {number} y - Global y pixel position
 	 * @returns {ShieldBlock} Or false if position is empty
@@ -88,10 +87,8 @@ class ShieldGrid extends Sprite {
 	 * Sprite instance. Uses the shieldGrid array to quickly find all
 	 * the blocks touching the sprite
 	 *
-	 * @method
-	 * @name getShieldBlocksCollidingWith
 	 * @param {Sprite} sprite - The sprite instance colliding with the shield.
-	 * @returns {ShieldBlocks[]} Array of shieldBlocks in collision with sprite.
+	 * @returns {ShieldBlock[]} Array of shieldBlocks in collision with sprite.
 	 */
 	getShieldBlocksCollidingWith(sprite) {
 		let blocks = [];

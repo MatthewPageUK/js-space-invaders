@@ -2,7 +2,6 @@
  * Show player score on screen. 
  *
  * @author Matthew Page <work@mjp.co>
- * @class
  * @extends hudComponent
  */
 class hudScore extends hudComponent {
@@ -17,9 +16,10 @@ class hudScore extends hudComponent {
 		this.domElement = document.getElementById('hudScore');
 	}
 	/**
-	 * Update the score value in the HTML DOM element
-	 *
-	 */
+	* Update the content of the score DOM element <div>.
+	*
+	* @returns {boolean} Success or failure.
+	*/
 	update() {
 		this.domElement.innerHTML = "Score : "+this.game.score;
 		return true;

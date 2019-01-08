@@ -2,12 +2,13 @@
  * Particle Explosion  factory - controls creation and destruction of particle explosions.
  *
  * @author Matthew Page <work@mjp.co>
- * @class ExplosionFactory
  * @extends Factory
  */
 class ExplosionFactory extends Factory {
 	/**
 	 * Create a new explosion factory
+	 *
+	 * @param {SpaceInvaders} game - The current game instance
 	 */
 	constructor(game) {
 		/* Factory(game, maxItems, minDelay, maxDelay) */
@@ -35,6 +36,13 @@ class ExplosionFactory extends Factory {
 	/**
 	 * Return a new Explosion instance, called by the make() method.
 	 *
+	 * @param {number} startX - The center point 
+	 * @param {number} startY - The center point
+	 * @param {string} colour - Colour of the particles
+	 * @param {number} particlesMax - Maximum number of particles
+	 * @param {number} particleSize - Size of particles in new explosion
+	 * @param {boolean} gravity - Simulate gravity on the explosion particles 
+	 * @retruns {Explosion} 
 	 */
 	makeItem(startX, startY, colour, particlesMax, particleSize, gravity) {
 		return new Explosion(this.game, this, startX, startY, colour, particlesMax, particleSize, gravity);

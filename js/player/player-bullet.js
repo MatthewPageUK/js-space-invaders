@@ -2,8 +2,10 @@
  * Player bullet, created by the player gun. Movement and collision detection
  *
  * @author Matthew Page <work@mjp.co>
- * @class Bullet
  * @extends Sprite
+ * @property {Player} player - The player who fired this bullet
+ * @property {PlayerGun} gun - The players gun that fired this bullet
+ * @property {number} damage - The amount of damage this bullet inflicts
  */
 class Bullet extends Sprite {
 	/**

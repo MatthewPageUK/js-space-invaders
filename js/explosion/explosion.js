@@ -2,13 +2,20 @@
  * On screen explosion with particles.
  *
  * @author Matthew Page <work@mjp.co>
- * @class Explosion
  * @extends Sprite
  */
 class Explosion extends Sprite {
 	/**
 	 * Create a new explosion instance
 	 *
+	 * @param {SpaceInvaders} game - The current game instance
+	 * @param {ExplosionFactory} explosionFactory The explosion factory that created this explosion
+	 * @param {string} colour - Colour of the particles
+	 * @param {array} particles - Array of particles
+	 * @param {number} particlesMax - Maximum particle size
+	 * @param {number} particlesSize Minimum particle size
+	 * @param {boolean} gravity - Gravity simulation
+	 * @param {number} activeCount - Number of active particles still alive
 	 */
 	constructor(game, explosionFactory, startX, startY, colour, particlesMax, particlesSize, gravity) {
 		/* Sprite(game, id, posX, posY, width, height, velocity, direction, hitPoints) */

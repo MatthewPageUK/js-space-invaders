@@ -38,7 +38,6 @@ class EnemyFleet extends Factory {
 	/**
 	 * Make a randomised fleet
 	 *
-	 * @method makeFleet
 	 * @returns {boolean} 
 	 */
 	makeFleet() {
@@ -58,7 +57,6 @@ class EnemyFleet extends Factory {
 	/**
 	 * Public make method to create a new enemy ship
 	 *
-	 * @method make
 	 * @param {string} type - Type of enemy ship to create (standard, boss, ufo).
 	 * @param {number} startX - Starting X position.
 	 * @param {number} startY - Starting Y position.
@@ -77,7 +75,6 @@ class EnemyFleet extends Factory {
 	/**
 	 * Private make item method to create and return new ship instance.
 	 *
-	 * @method makeItem
 	 * @param {string} type - Type of enemy ship to create (standard, boss, ufo).
 	 * @param {number} startX - Starting X position.
 	 * @param {number} startY - Starting Y position.
@@ -103,7 +100,6 @@ class EnemyFleet extends Factory {
 	/**
 	 * Get how many enemies are still alive.
 	 *
-	 * @method totalAlive
 	 * @returns {number} 
 	 */
 	get totalAlive() {
@@ -112,7 +108,6 @@ class EnemyFleet extends Factory {
 	/**
 	 * Remove a ship from the fleet.
 	 *
-	 * @method removeShip
 	 * @param {EnemyShip} ship - The ship being removed 
 	 */
 	removeShip(ship) {

@@ -2,7 +2,9 @@
  * Hud Component wrapper (abstractish class)
  *
  * @author Matthew Page <work@mjp.co>
- * @class hudComponent
+ * @property {SpaceInvaders} game - The current game instance
+ * @property {Player} player - The current player
+ * @property {Object} domElement - The DOM element for this component on screen
  */
 class hudComponent {
 	/**
@@ -19,6 +21,7 @@ class hudComponent {
 	/**
 	 * Update loop
 	 *
+	 * @returns {boolean}
 	 */
 	update() {
 		return true;

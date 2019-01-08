@@ -4,7 +4,7 @@
  * @author Matthew Page <work@mjp.co>
  * @property {SpaceInvaders} game - The current game instance
  * @property {PlayerShip} player - The player instance
- * @property {HUDComponents[]} components - Array of HUD components being displayed.
+ * @property {HUDComponent[]} components - Array of HUD components being displayed.
  */
 class HUD {
 	/**

@@ -2,12 +2,16 @@
  * Player 1 ship
  *
  * @author Matthew Page <work@mjp.co>
- * @class
  * @extends Sprite
+ * @property {string} keyState - The current key state
+ * @property {number} killstreak - The currnet killstreak value
+ * @property {number} maxHitPoints - Maximum health / hit points this ship can have
+ * @property {number} upgradeLevel - The level of upgrade for the gun from bonus drops
  */
 class PlayerShip extends Sprite {
 	/**
 	 * Create the ship instance
+	 *
 	 * @param {Game} game - The current game instance.
 	 * @param {string} id - Unique DOM element id.
 	 */
@@ -26,7 +30,6 @@ class PlayerShip extends Sprite {
 	/**
 	 * Reset the player to default
 	 *
-	 * @method reset
 	 */
 	reset() {
 		this.posX = 200;
@@ -39,7 +42,6 @@ class PlayerShip extends Sprite {
 	/**
 	 * Receive the keydown and keyup events from the main game instance
 	 *
-	 * @method receiveCommand
 	 * @param {string} type - Keydown or Keyup
 	 * @param {string} command - Left, Right or Fire
 	 */
@@ -57,7 +59,6 @@ class PlayerShip extends Sprite {
 	/**
 	 * Get a gun upgrade, called from BonusDrop / Gun object
 	 *
-	 * @method receiveUpgrade
 	 * @param {number} upgradeAmount - Amount of gun upgrade applied
 	 */
 	receiveUpgrade(upgradeAmount) {
@@ -72,7 +73,6 @@ class PlayerShip extends Sprite {
 	/**
 	 * Remove the gun upgrade
 	 *
-	 * @method removeUpgrade
 	 */
 	removeUpgrade() {
 		if(this.upgradeLevel==1) {
@@ -86,7 +86,6 @@ class PlayerShip extends Sprite {
 	/**
 	 * Receive a health bonus
 	 *
-	 * @method receiveHealth
 	 * @param {number} health - Amount of health / hit points received
 	 */
 	receiveHealth(health) {
@@ -97,7 +96,6 @@ class PlayerShip extends Sprite {
 	/**
 	 * Receive damage from enemy bombs, removes upgrades
 	 *
-	 * @method receiveDamage
 	 * @param {number} damage - Amount of damage received
 	 */
 	receiveDamage(damage) {
@@ -111,7 +109,6 @@ class PlayerShip extends Sprite {
 	/**
 	 * Main player update loop, move, draw etc.
 	 *
-	 * @method update
 	 */
 	update() {
 		if(this.isActive) {
@@ -123,7 +120,6 @@ class PlayerShip extends Sprite {
 	/**
 	 * Overide Sprite default move() method, base movement on the current keyState
 	 *
-	 * @method move
 	 */
 	move() {
 		if(this.keyState == "right")

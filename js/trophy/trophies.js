@@ -2,7 +2,8 @@
  * The Trophies system wrapper / factory
  *
  * @author Matthew Page <work@mjp.co>
- * @class
+ * @property {SpaceInvaders} game - The current game instance
+ * @property {array} trophies - Array of trophies for this game
  */
 class Trophies {
 	/**
@@ -18,9 +19,9 @@ class Trophies {
 		this.trophies.push(new TrophyRoswell(this.game.enemyFleet));
 	}
 	/**
-	 * Reset the trophies XXXXXXXXXXXXXX TO DO
+	 * Reset the trophies 
 	 * 
-	 * @method update
+	 * @todo Something is meant to happen here?
 	 */
 	reset() {
 		this.trophies.forEach((trophy) => {
@@ -30,7 +31,6 @@ class Trophies {
 	/**
 	 * Update loop issues update to each trophy
 	 * 
-	 * @method update
 	 */
 	update() {
 		this.trophies.forEach((trophy) => {
