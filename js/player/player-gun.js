@@ -39,23 +39,6 @@ class PlayerGun extends Factory {
 			return false;
 		}
 	}
-	
-	/**
-	 * Make a new Bullet if the gun can fire, overides default
-	 * Factory.make() method
-	 *
-	 * @returns {boolean} True is it was made, false if not
-	 */
-	// make() {
-	// 	if(this.canMake()) {
-	// 		this.makeCounter += 1;
-	// 		this.items.push(this.makeItem(this.player));
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	}
-	// }
-
 	/**
 	 * Makes a new Bullet and returns it, called from 
 	 * Factory.make() method
