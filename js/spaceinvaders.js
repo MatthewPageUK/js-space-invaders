@@ -110,6 +110,7 @@ class SpaceInvaders {
 	
 			case "play":
 				this.isPaused = false;
+				this.domElement.style.opacity = 1;
 				this.gameState = "play";
 				this.splashScreen.style.display = "none";
 				this.gameOverScreen.style.display = "none";

@@ -38,7 +38,7 @@ class Bullet extends Sprite {
 		/* Gone off screen, missed so destroy the bullet */
 		if(this.posY < -this.height)								
 		{
-			this.gun.notifyMiss(this);
+			this.gun.notifyMiss();
 			this.player.killstreak = 0;
 			this.gun.destroy(this);
 			return false;
@@ -52,7 +52,7 @@ class Bullet extends Sprite {
 				this.game.explosionFactory.make(this.posX+(this.width/2), this.posY-8, 'black', 10, 6, 1);
 				shieldBlock.destroy();
 				this.player.killstreak = 0;
-				this.gun.notifyMiss(this);
+				this.gun.notifyMiss();
 				this.gun.destroy(this);
 				return false;
 			}
@@ -61,7 +61,7 @@ class Bullet extends Sprite {
 			for (let index = 0; index < this.game.enemyFleet.items.length; ++index) {
 				if(this.detectCollisionWith(this.game.enemyFleet.items[index])) {
 					this.inflictDamage(this.game.enemyFleet.items[index]);
-					this.gun.notifyHit(this);
+					this.gun.notifyHit();
 					this.gun.destroy(this);
 					return false;
 				}

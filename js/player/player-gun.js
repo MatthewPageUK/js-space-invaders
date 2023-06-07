@@ -29,6 +29,8 @@ class PlayerGun extends Factory {
 	 * @returns {boolean} True is it was fired, false if not
 	 */
 	fireGun() {
+		if (this.game.gameState != "play") return false;
+
 		if(this.make()) {
 			this.shotsFired += 1;
 			new Audio('sfx/playerfire.mp3').play();
@@ -37,21 +39,23 @@ class PlayerGun extends Factory {
 			return false;
 		}
 	}
+	
 	/**
 	 * Make a new Bullet if the gun can fire, overides default
 	 * Factory.make() method
 	 *
 	 * @returns {boolean} True is it was made, false if not
 	 */
-	make() {
-		if(this.canMake()) {
-			this.makeCounter += 1;
-			this.items.push(this.makeItem(this.player));
-			return true;
-		} else {
-			return false;
-		}
-	}
+	// make() {
+	// 	if(this.canMake()) {
+	// 		this.makeCounter += 1;
+	// 		this.items.push(this.makeItem(this.player));
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}
+	// }
+
 	/**
 	 * Makes a new Bullet and returns it, called from 
 	 * Factory.make() method
@@ -86,7 +90,7 @@ class PlayerGun extends Factory {
 	 *
 	 * @returns {boolean}
 	 */
-	notifyHit(bullet) {
+	notifyHit() {
 		this.shotsHit += 1;
 		return true;
 	}
@@ -95,7 +99,7 @@ class PlayerGun extends Factory {
 	 *
 	 * @returns {boolean}
 	 */
-	notifyMiss(bullet) {
+	notifyMiss() {
 		this.shotsMissed += 1;
 		return true;
 	}
