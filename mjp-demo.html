@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>JS Space Invaders - Vanilla ES6 OOP Javascript Space Invader Game</title>
+		<link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+		<link href="css/main.css" rel="stylesheet">
+		<link href="css/bonus-drop.css" rel="stylesheet">
+		<link href="css/hud.css" rel="stylesheet">
+		<link href="css/bubble.css" rel="stylesheet">
+		<link href="css/player.css" rel="stylesheet">
+		<link href="css/enemy.css" rel="stylesheet">
+		<link href="css/shield.css" rel="stylesheet">
+		<link href="css/explosion.css" rel="stylesheet">
+	</head>
+
+	<body style="background-color: transparent;">
+
+		<div id="gameWrapper" style="width: 920px; margin-left: auto; margin-right: auto;">
+			<div id="game">
+				<div id="player1" class="player1"></div>
+				<div id="hudScore" class="hudComponent"></div>
+				<div id="hudHealth" class="hudComponent"></div>
+				<div id="hudAccuracy" class="hudComponent"></div>
+				<div id="hudReload" class="hudComponent"></div>
+				<div id="hudKillstreak" class="hudComponent"></div>
+				<div id="hudEnemy" class="hudComponent"></div>
+			</div>
+				<div class="splashScreen" id="winnerScreen">
+					<h2>You are a winner !!!</h2>
+				</div>
+				<div class="splashScreen" id="gameOverScreen">
+					<h2>Game Over</h2>
+				</div>
+				<div class="splashScreen" id="splashScreen">
+					<h2>Welcome to JS Space Invaders</h2>
+					<div>
+						<p class="half"><img src="gfx/enemy-ship.png" style="width: 30px; height: auto"> Standard Invader (1 hit point)</p>
+						<p class="half"><img src="gfx/enemy-boss.png" style="width: 30px; height: auto"> Boss Invader (2 hit points)</p>
+						<p class="half"><img src="gfx/enemy-ufo.png" style="width: 30px; height: auto"> UFO Invader (10 hit points)</p>
+						<p class="half"><img src="gfx/enemy-bomb.png"> Avoid enemy bombs</p>
+						<p class="half"><img src="gfx/bonusHealth.png" style="width: 20px; height: auto"> Pick up health packs</p>
+						<p class="half"><img src="gfx/bonusGun.png" style="width: 20px; height: auto"> Weapon Upgrades</p>
+						<p class="half"><img src="gfx/bonusScore.png" style="width: 20px; height: auto"> Score Bonus</p>
+						<p class="half"><br>Move with the Left / Right arrow keys, Space to fire</p>
+					</div>
+					<p><a href="#" onclick="myGame.changeState('play'); return false">PLAY</a></p>
+				</div>
+			<div id="gameTrophies" >
+				<h2>Trophies Won</h2>
+				<p id="trophyFirstStrike"><img src="gfx/trophy1.png"> First Strike - get a kill with the first shot</p>
+				<p id="trophyKillstreak"><img src="gfx/trophy2.png"> Killstreak - get 10 kills in a row</p>
+				<p id="trophyRoswell"><img src="gfx/trophy3.png"> Roswell - shoot down the UFO while other enemies still remain</p>
+				<div class="buttons">
+					<a href="#" onclick="myGame.restart(); return false">New Game</a>
+					<a href="#" onclick="myGame.splashToggle(); return false">Pause / Resume</a>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/core/sprite.js" type="text/javascript"></script>
+		<script src="js/core/factory.js" type="text/javascript"></script>
+
+		<script src="js/hud/hud.js" type="text/javascript"></script>
+		<script src="js/hud/hud-component.js" type="text/javascript"></script>
+		<script src="js/hud/hud-accuracy.js" type="text/javascript"></script>
+		<script src="js/hud/hud-health.js" type="text/javascript"></script>
+		<script src="js/hud/hud-score.js" type="text/javascript"></script>
+		<script src="js/hud/hud-reload.js" type="text/javascript"></script>
+		<script src="js/hud/hud-killstreak.js" type="text/javascript"></script>
+		<script src="js/hud/hud-enemy.js" type="text/javascript"></script>
+
+		<script src="js/bonus/bonus-dropper.js" type="text/javascript"></script>
+		<script src="js/bonus/bonus-drop.js" type="text/javascript"></script>
+		<script src="js/bonus/bonus-gun.js" type="text/javascript"></script>
+		<script src="js/bonus/bonus-health.js" type="text/javascript"></script>
+		<script src="js/bonus/bonus-score.js" type="text/javascript"></script>
+
+		<script src="js/bubble/bubble-factory.js" type="text/javascript"></script>
+		<script src="js/bubble/bubble.js" type="text/javascript"></script>
+		<script src="js/bubble/bubble-damage.js" type="text/javascript"></script>
+		<script src="js/bubble/bubble-health.js" type="text/javascript"></script>
+		<script src="js/bubble/bubble-score.js" type="text/javascript"></script>
+
+		<script src="js/player/player-ship.js" type="text/javascript"></script>
+		<script src="js/player/player-gun.js" type="text/javascript"></script>
+		<script src="js/player/player-bullet.js" type="text/javascript"></script>
+
+		<script src="js/enemy/enemy-bomb-factory.js" type="text/javascript"></script>
+		<script src="js/enemy/enemy-bomb.js" type="text/javascript"></script>
+
+		<script src="js/enemy/enemy-fleet.js" type="text/javascript"></script>
+		<script src="js/enemy/enemy-ship.js" type="text/javascript"></script>
+		<script src="js/enemy/enemy-ship-ufo.js" type="text/javascript"></script>
+		<script src="js/enemy/enemy-ship-boss.js" type="text/javascript"></script>
+
+		<script src="js/player/shield-block.js" type="text/javascript"></script>
+		<script src="js/player/shield-grid.js" type="text/javascript"></script>
+
+		<script src="js/explosion/explosion-factory.js" type="text/javascript"></script>
+		<script src="js/explosion/explosion.js" type="text/javascript"></script>
+		<script src="js/explosion/explosion-particle.js" type="text/javascript"></script>
+
+		<script src="js/trophy/trophies.js" type="text/javascript"></script>
+		<script src="js/trophy/trophy-firststrike.js" type="text/javascript"></script>
+		<script src="js/trophy/trophy-killstreak.js" type="text/javascript"></script>
+		<script src="js/trophy/trophy-roswell.js" type="text/javascript"></script>
+
+		<script src="js/spaceinvaders.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			/**
+			 * Start the game running.
+			 */
+			const myGame = new SpaceInvaders();
+		</script>
+	</body>
+</html>
