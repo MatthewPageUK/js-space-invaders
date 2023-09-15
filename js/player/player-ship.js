@@ -35,7 +35,7 @@ class PlayerShip extends Sprite {
 		this.posX = 200;
 		this.removeUpgrade();
 		this.killstreak = 0;
-		this.gun = new PlayerGun(this.game, this);
+		this.gun.reset();
 		this.keyState = "";
 		this.hitPoints = 25;
 	}
